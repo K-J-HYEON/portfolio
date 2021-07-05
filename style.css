@@ -103,11 +103,7 @@ p {
 #navbar {
   display: flex;
   justify-content: space-between;
-  /* background-color: var(--color-pink); */
-  /* 고친거 */
-  align-items: center; /* 센터로 정렬*/
-  /* color: var(--color-white); */
-  /* 고친거 */
+  align-items: center;
   padding: 16px;
   background-color: var(--color-pink);
 }
@@ -213,7 +209,7 @@ p {
 }
 
 .major__icon i {
-  transition: all var(--animation-duration);
+  transition: all var(--animation-duration) ease;
 }
 
 .major__icon:hover i {
@@ -221,7 +217,7 @@ p {
   transform: rotate(-30deg) scale(1.1);
 }
 
-.major_titles,
+.major__title,
 .major__description {
   color: var(--color-dark-grey);
 }
@@ -240,16 +236,16 @@ p {
   text-align: left;
 }
 
-.school__name,
-.school__period {
+.job__name,
+.job__period {
   color: var(--color-light-grey);
 }
 
-.school__name {
+.job__name {
   font-size: var(--font-small);
 }
 
-.school__period {
+.job__period {
   font-size: var(--font-micro);
 }
 
@@ -449,6 +445,7 @@ p {
 #contact {
   background-color: var(--color-pink);
 }
+
 .contact__title,
 .contact__email,
 .contact__rights {
@@ -471,7 +468,7 @@ p {
 }
 
 /* For below 768px screen width */
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
   .navbar__toggle-btn {
     display: block;
   }
