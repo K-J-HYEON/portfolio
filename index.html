@@ -37,12 +37,13 @@
       <a href="#">Jay</a>
     </div>
     <ul class="navbar__menu">
-      <li class="navbar__menu__item active">Home</li>
-      <li class="navbar__menu__item">About</li>
-      <li class="navbar__menu__item">Skills</li>
-      <li class="navbar__menu__item">My work</li>
-      <li class="navbar__menu__item">Testimonial</li>
-      <li class="navbar__menu__item">Contact</li>
+      <!-- data-link 붙여줌 -->
+      <li class="navbar__menu__item active" data-link="#home">Home</li>
+      <li class="navbar__menu__item" data-link="#about">About</li>
+      <li class="navbar__menu__item" data-link="#skills">Skills</li>
+      <li class="navbar__menu__item" data-link="#work">My work</li>
+      <li class="navbar__menu__item" data-link="#testimonials">Testimonial</li>
+      <li class="navbar__menu__item" data-link="#contact">Contact</li>
     </ul>
 
 
@@ -53,13 +54,16 @@
   </nav>
 
   <!-- Home  -->
+  <!-- section class="home" 붙여줌 -->
   <section class="home">
-    <img src="imgs/profile.png" alt="Jay's profile photo" class="home__avatar" />
-    <h1 class="home__title">Hello, <br />I'm Dream Coder</h1>
-    <h2 class="home__description">
-      One moer step for front-end developers
-    </h2>
-    <button class="home__contact">Contact Me</button>
+    <div class="home__container">
+      <img src="imgs/profile.png" alt="Jay's profile photo" class="home__avatar" />
+      <h1 class="home__title">Hello, <br />I'm Dream Coder</h1>
+      <h2 class="home__description">
+        One moer step for front-end developers
+      </h2>
+      <button class="home__contact">Contact Me</button>
+    </div>
   </section>
 
   <!-- About -->
@@ -89,20 +93,21 @@
           <i class="fab fa-css3-alt"></i>
         </div>
         <h2 class="major__title">CSS3</h2>
-        <div class="major__description"></div>
-        Basics of CSS3
-        <br />Two step of front-end development
+        <p class="major__description">
+          Basics of CSS3
+          <br />Two step of front-end development
+        </p>
       </div>
       <div class="major">
         <div class="major__icon">
           <i class="fab fa-js-square"></i>
         </div>
         <h2 class="major__title">Javascript</h2>
-        <div class="major__description"></div>
-        Basics of Vanilla javascript
-        <br />Three step of front-end development
+        <p class="major__description">
+          Basics of Vanilla javascript
+          <br />Three step of front-end development
+        </p>
       </div>
-
     </div>
     <div class="about__school">
       <div class="school">
@@ -119,19 +124,6 @@
         </div>
       </div>
 
-      <!-- <div class="Education">
-        <img src="imgs/education/logo-education.png" alt="Youngwoo global learning" class="education__logo">
-        <div class="job__description">
-          <p class="education__contents">
-            After taking the AI ​​system engineer development course at an it education
-            institution called Youngwoo Global Learning,
-            I first encountered the developer process.
-          </p>
-          <p class="education__period">
-            2020 December - Until 2021 May
-          </p>
-        </div> -->
-
       <div class="about__school">
         <div class="school">
           <img src="imgs/schools/logo-pnu.png" alt="Busan national University" class="school__logo" />
@@ -146,9 +138,6 @@
             </p>
           </div>
         </div>
-
-      </div>
-    </div>
   </section>
 
 
@@ -280,7 +269,6 @@
             <p class="name"><a href="">Jay</a> /Samsung</p>
           </div>
           <div class="testimonial">
-
             <div class="testimonial__speech-bubble">
               <p>
                 He is a passionate and very responsible person.
@@ -311,6 +299,10 @@
       2021 Dream Coding Jay - All rights reserved
     </p>
   </section>
+
+</body>
+
+
 </body>
 
 </html>

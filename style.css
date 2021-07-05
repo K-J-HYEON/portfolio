@@ -43,7 +43,8 @@
 body {
   font-family: "Roboto", sans-serif;
   margin: 0;
-  cursor: default;
+  /* cursor: default; */
+  /* 고친거 */
 }
 
 a {
@@ -52,9 +53,15 @@ a {
 }
 
 ul {
-  list-style: none;
+  /* list-style: none; */
   padding-left: 0; /*padding 없애줌*/
 }
+
+/* 고친거 */
+li {
+  list-style: none;
+}
+/*  */
 
 button {
   background-color: transparent;
@@ -96,14 +103,13 @@ p {
 #navbar {
   display: flex;
   justify-content: space-between;
-  background-color: var(--color-pink);
+  /* background-color: var(--color-pink); */
+  /* 고친거 */
   align-items: center; /* 센터로 정렬*/
-  color: var(--color-white);
+  /* color: var(--color-white); */
+  /* 고친거 */
   padding: 16px;
-}
-
-.navbar__menu {
-  display: flex;
+  background-color: var(--color-pink);
 }
 
 .navbar__logo {
@@ -111,19 +117,30 @@ p {
   font-weight: var(--weight-semi-bold);
 }
 
+/* logo 밑으로 옮김 */
+.navbar__menu {
+  display: flex;
+}
+
 .navbar__menu__item {
   padding: 8px 12px;
   margin: 0 4px;
+  color: var(--color-white); /*고친거*/
   cursor: pointer;
-  border-radius: var(--size-border-radius);
+  /* border-radius: var(--size-border-radius); */
+  /* 고친거 */
 }
 
 .navbar__menu__item.active {
   border: 1px solid var(--color-white);
+  border-radius: var(--size-border-radius);
+  /* 고친거 */
 }
 
 .navbar__menu__item:hover {
   background-color: var(--color-dark-pink);
+  border-radius: var(--size-border-radius);
+  /* 고친거 */
 }
 
 .navbar__toggle-btn {
