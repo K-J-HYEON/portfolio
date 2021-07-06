@@ -14,6 +14,8 @@ document.addEventListener('scroll', () => {
     }
 });
 
+
+// 2021/7/6 오후 8시 30분
 // Handle scrolling when tapping on the navbar menu
 const navbarMenu = document.querySelector('.navbar__menu');
 navbarMenu.addEventListener('click', (event) => {
@@ -23,12 +25,20 @@ navbarMenu.addEventListener('click', (event) => {
     if(link == null) {
         return;
     }
+    navbarMenu.classList.remove('open');
     // console.log(event.target.dataset.link);
     // const scrollTo = document.querySelector(link);
     // scrollTo.scrollIntoView( {behavior: 'smooth'});
     scrollIntoView(link);
 });
 
+
+
+// Navbar toggle button for small screen
+const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
+navbarToggleBtn.addEventListener('click', () => {
+    navbarMenu.classList.toggle('open');
+});
 
 
 // Handle click on "contact me" button on home 2021/ 7/6
@@ -77,6 +87,33 @@ workBtnContainer.addEventListener('click', (e) => {
         return;
     }
     // console.log(filter);
+
+
+
+
+    
+    // // 추가한거
+    // // Remove selection from the previous item select the new one
+    // const active = document.querySelector('.catregory__btn.selected');
+    // // active.classList.remove('selected');
+    // // const target = 
+    // //   e. target.nodeName === 'BUTTON' ? e.target : e.target.parentNode; // 조건이 맞으면 왼쪽에 있는것을 실행
+    // //   // 아니면 오른쪽에 있는것을 실행
+    // // target.classList.add('selected');
+    // // if로 실행
+    // if (active != null) {
+    //     active.classList.remove('selected');
+    // }
+    // e.target.classList.add('selected');
+
+    // Remove selection from the previous item and select the new one
+    const active = document.querySelector('.category__btn.selected');
+    if (active != null) {
+      active.classList.remove('selected');
+    }
+    e.target.classList.add('selected');
+
+
     projectContainer.classList.add('anim-out');
 // setTimeout 추가
     setTimeout(() => {
