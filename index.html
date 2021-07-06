@@ -213,19 +213,28 @@
 
 
   <!-- Work -->
+  <!-- data-filter= 추가 -->
   <section id="work" class="section">
     <div class="section__container">
       <h1>My work</h1>
       <h3>Projects</h3>
       <div class="work__categories">
-        <button class="category__btn">All <span class="category__count">8</span></button>
-        <button class="category__btn">Front-end <span class="category__count">3</span></button>
-        <button class="category__btn">Back-ends <span class="category__count">3</span></button>
-        <button class="category__btn">Mobiles <span class="category__count">2</span></button>
+        <button class="category__btn active" data-filter="*">
+          All <span class="category__count">8</span>
+        </button>
+        <button class="category__btn" data-filter="front-end">
+          Front-end <span class="category__count">3</span>
+        </button>
+        <button class="category__btn" data-filter="back-end">
+          Back-ends <span class="category__count">3</span>
+        </button>
+        <button class="category__btn" data-filter="mobile">
+          Mobiles <span class="category__count">2</span>
+        </button>
       </div>
-
       <div class="work__projects">
-        <a href="https://github.com/K-J-HYEON/portfolio" class="project" target="blank">
+        <!--a href~ 끝에다가 data-type="front-end"를 넣어줌 -->
+        <a href="https://github.com/K-J-HYEON/portfolio" class="project" target="blank" data-type="front-end">
           <img class="project__img" src="imgs/projects/youtube.png" a lt="Youtube">
           <div class="project__description">
             <h3>Youtube Site</h3>
@@ -233,7 +242,7 @@
           </div>
         </a>
 
-        <a href="https://github.com/K-J-HYEON/portfolio" class="project" target="blank">
+        <a href="https://github.com/K-J-HYEON/portfolio" class="project" target="blank" data-type="back-end">
           <img class="project__img" src="imgs/projects/navbar.png" alt="navbar">
           <div class="project__description">
             <h3>Responsive Navbar</h3>
@@ -241,7 +250,7 @@
           </div>
         </a>
 
-        <a href="https://github.com/K-J-HYEON/portfolio" class="project" target="blank">
+        <a href="https://github.com/K-J-HYEON/portfolio" class="project" target="blank" data-type="mobile">
           <img class="project__img" src="imgs/projects/game.png" alt="game">
           <div class="project__description">
             <h3>shopping mall clone-coding</h3>
