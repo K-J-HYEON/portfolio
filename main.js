@@ -88,32 +88,21 @@ workBtnContainer.addEventListener('click', (e) => {
     }
     // console.log(filter);
 
-
-
-
-    
     // // 추가한거
     // // Remove selection from the previous item select the new one
-    // const active = document.querySelector('.catregory__btn.selected');
-    // // active.classList.remove('selected');
-    // // const target = 
-    // //   e. target.nodeName === 'BUTTON' ? e.target : e.target.parentNode; // 조건이 맞으면 왼쪽에 있는것을 실행
-    // //   // 아니면 오른쪽에 있는것을 실행
-    // // target.classList.add('selected');
-    // // if로 실행
+    const active = document.querySelector('.category__btn.selected');
+    active.classList.remove('selected');
+    const target = 
+      e. target.nodeName === 'BUTTON' ? e.target : e.target.parentNode; // 조건이 맞으면 왼쪽에 있는것을 실행
+      // 아니면 오른쪽에 있는것을 실행
+    target.classList.add('selected');
+    // if로 실행
     // if (active != null) {
     //     active.classList.remove('selected');
     // }
     // e.target.classList.add('selected');
 
-    // Remove selection from the previous item and select the new one
-    const active = document.querySelector('.category__btn.selected');
-    if (active != null) {
-      active.classList.remove('selected');
-    }
-    e.target.classList.add('selected');
-
-
+    
     projectContainer.classList.add('anim-out');
 // setTimeout 추가
     setTimeout(() => {
