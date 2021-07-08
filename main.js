@@ -18,6 +18,8 @@ document.addEventListener('scroll', () => {
 // 2021/7/6 오후 8시 30분
 // Handle scrolling when tapping on the navbar menu
 const navbarMenu = document.querySelector('.navbar__menu');
+
+// navbarmenu을 클릭하게 되면
 navbarMenu.addEventListener('click', (event) => {
     
     const target = event.target;
@@ -29,7 +31,13 @@ navbarMenu.addEventListener('click', (event) => {
     // console.log(event.target.dataset.link);
     // const scrollTo = document.querySelector(link);
     // scrollTo.scrollIntoView( {behavior: 'smooth'});
+    
+    // 해당하는 곳으로 이동하게 되있다.
     scrollIntoView(link);
+    //21/7/8 추가
+
+    // 수동적으로 선택되게 되어있다.
+    // selectNavItem(target);
 });
 
 
@@ -121,16 +129,116 @@ workBtnContainer.addEventListener('click', (e) => {
   }, 300);
 });
 
+// 버튼 클릭스 활성화 처리
+// function 자리를 옮김
 
 
 
 
+
+// 1. 모든 섹션 요소들과 메뉴아이템들을 가지고 온다.
+// 2. IntersectionObserve를 이용해서 모든 섹션들을 관찰한다.
+// 3. 보여지는 섹션에 해당하는 메뉴 아이템을 활성화 시킨다.
+
+// 각각의 아이디를 가지고 있는 배열
+
+// sectionIds 배열에 우리가 사용하는 모든 아이디를 문자열로
+// 배열로 저장해둠
+const sectionIds = [
+    '#home',
+    '#about',
+    '#skills',
+    '#work',
+    '#testimonials',
+    '#contact'
+];
+
+
+// map
+// 모든 섹션 요소들을  sections라는 배열에 할당해 두었고
+const sections = sectionIds.map(id => document.querySelector(id));
+// 동일한 내비게이션 메뉴아이템 요소들을 navItems로 할당해 두었다.
+const navItems = sectionIds.map(id => 
+    document.querySelector(`[data-link="${id}"]`)
+);
+
+
+console.log(sections);
+console.log(navItems);
+
+
+// 현재 선택된 메뉴인덱스와 메뉴요소를 변수에 저장해 둠
+let selectedNavIndex = 0;
+let selectedNavItem = navItems[0]; 
+function selectNavItem(selected) { // 새로운 메뉴아이템을 선택할 때 마다
+    selectedNavItem.classList.remove('active'); // 이전에 활성화된 아이를 지워주고 
+    // selectedNavItem = navItems[selectedIndex];/
+    selectedNavItem = selected; // 다시 새롭게 할당하고 나서 
+    selectedNavItem.classList.add('active') // active를 지정해 주었다.
+}
+
+
+// 버튼 클릭스 활성화 처리
+// function 자리 옮겼음
+
+// 스크롤이 되면 위에서 선언된
+//scrollIntoView라는 함수를 호출한다면
+// 그 안에 내부적으로 처리가 되기 때문에
+// 더 이상 빠진 게 없는지 걱정하지 않아도 된다.
 function scrollIntoView(selector) {
     const scrollTo = document.querySelector(selector);
     scrollTo.scrollIntoView({behavior: 'smooth'});
+    // navItems 인덱스를 전달해 주면 된다.
+    // sections라는 배열안에 우리가 사용하는 모든 아이디의 이름들이 들어있다.
+    selectNavItem(navItems[sections.indexOf(selector)]);
+}
+
+
+const observerOptions = { 
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.3
 }
 
 
 
 
 
+// 콜백안에서 해당하는 섹션을 찾아서 navbar메뉴를 활성화 시키기
+const observerCallback = (entries, observer) => {
+    entries.forEach(entry => {
+        if(!entry.isIntersecting && entry.intersectionRatio > 0) { 
+            // console.log(entry);
+            const index = sectionIds.indexOf(`#${entry.target.id}`); //인터섹션 옵저버를 이용해서
+            // let selectedIndex;
+            // console.log(index, entry.target.id);
+
+            // 스크롤링이 아래로 되어서 페이지가 올라옴
+            if (entry.boundingClientRect.y < 0) { //섹션이 밖으로 나갈때 마다 
+                selectedNavIndex = index + 1; // 그 다음에 해당하는 인덱스를 계산해서 할당해 둠
+            } else {
+                selectedNavIndex = index - 1;
+            }
+        }
+    });
+};
+
+
+
+const observer = new IntersectionObserver(observerCallback, observerOptions);
+sections.forEach(section => observer.observe(section));
+
+
+
+// 스크롤링 될때마다 해당하는 메뉴선택되게하기
+window.addEventListener('scroll', () => { //위에 인덱스를 활용해서 스크롤이 사용자가 스크롤링 할 때
+    if (window.scrollY === 0) {
+        selectedNavIndex = 0; // 스크롤이 제일 위라면 제일 위에 있는 인덱스를 설정하고
+    } else if (
+        Math.round(window.scrollY + window.innerHeight)>= 
+        document.body.clientHeight
+    ) {
+        selectedNavIndex = navItems.length - 1; // 제일 아래라면 마지막의 메뉴 아이템을 선택
+    } // 중간에 있는 거라면 인터섹션 옵저버에서 계산된 navIndex를 이용해서 메뉴 아이템을 찾았다.
+    selectNavItem(navItems[selectedNavIndex]);
+})
