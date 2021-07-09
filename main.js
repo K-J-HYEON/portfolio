@@ -19,6 +19,8 @@ document.addEventListener('scroll', () => {
 // Handle scrolling when tapping on the navbar menu
 const navbarMenu = document.querySelector('.navbar__menu');
 
+
+
 // navbarmenu을 클릭하게 되면
 navbarMenu.addEventListener('click', (event) => {
     
@@ -28,6 +30,8 @@ navbarMenu.addEventListener('click', (event) => {
         return;
     }
     navbarMenu.classList.remove('open');
+
+    
     // console.log(event.target.dataset.link);
     // const scrollTo = document.querySelector(link);
     // scrollTo.scrollIntoView( {behavior: 'smooth'});
