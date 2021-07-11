@@ -15,6 +15,14 @@
   --color-black: #000000;
   --color-thick-blue: #0b8dde;
 
+  /* 빼먹었엇다 */
+  /* Font size */
+  --font-large: 48px;
+  --font-medium: 28px;
+  --font-regular: 18px;
+  --font-small: 16px;
+  --font-micro: 14px;
+
   /* Font weight */
   --weight-bold: 700;
   --weight-semi-bold: 600;
