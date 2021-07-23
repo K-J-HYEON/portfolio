@@ -278,6 +278,7 @@ p {
   font-size: var(--font-micro);
 }
 
+
 /* Skill  */
 
 #skills {
@@ -630,7 +631,7 @@ p {
     margin-bottom: 8px;
   }
 
-  .testimonial_-speech-bubble {
+  .testimonial__speech-bubble {
     order: 1;
   }
 

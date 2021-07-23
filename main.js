@@ -7,10 +7,10 @@ const navbarHeight = navbar.getBoundingClientRect().height;
 document.addEventListener('scroll', () => {
     // console.log(window.scrollY);
     // console.log(`navbarHeight: ${navbarHeight}`);
-    if(window.scrollY > navbarHeight) {
+    if (window.scrollY > navbarHeight) {
         navbar.classList.add('navbar--dark');
     } else {
-        navbar.classList.remove('navbar--dark');   
+        navbar.classList.remove('navbar--dark');
     }
 });
 
@@ -23,19 +23,19 @@ const navbarMenu = document.querySelector('.navbar__menu');
 
 // navbarmenu을 클릭하게 되면
 navbarMenu.addEventListener('click', (event) => {
-    
+
     const target = event.target;
     const link = target.dataset.link;
-    if(link == null) {
+    if (link == null) {
         return;
     }
     navbarMenu.classList.remove('open');
 
-    
+
     // console.log(event.target.dataset.link);
     // const scrollTo = document.querySelector(link);
     // scrollTo.scrollIntoView( {behavior: 'smooth'});
-    
+
     // 해당하는 곳으로 이동하게 되있다.
     scrollIntoView(link);
     //21/7/8 추가
@@ -95,7 +95,7 @@ const projectContainer = document.querySelector('.work__projects');
 const projects = document.querySelectorAll('.project');
 workBtnContainer.addEventListener('click', (e) => {
     const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
-    if(filter == null) {
+    if (filter == null) {
         return;
     }
     // console.log(filter);
@@ -104,9 +104,9 @@ workBtnContainer.addEventListener('click', (e) => {
     // // Remove selection from the previous item select the new one
     const active = document.querySelector('.category__btn.selected');
     active.classList.remove('selected');
-    const target = 
-      e. target.nodeName === 'BUTTON' ? e.target : e.target.parentNode; // 조건이 맞으면 왼쪽에 있는것을 실행
-      // 아니면 오른쪽에 있는것을 실행
+    const target =
+        e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode; // 조건이 맞으면 왼쪽에 있는것을 실행
+    // 아니면 오른쪽에 있는것을 실행
     target.classList.add('selected');
     // if로 실행
     // if (active != null) {
@@ -114,23 +114,23 @@ workBtnContainer.addEventListener('click', (e) => {
     // }
     // e.target.classList.add('selected');
 
-    
+
     projectContainer.classList.add('anim-out');
-// setTimeout 추가
+    // setTimeout 추가
     setTimeout(() => {
-      projects.forEach((project) => {
-        console.log(project.dataset.type);
-        if (filter ==='*' || filter === project.dataset.type) {
-            project.classList.remove('invisible'); // 필터가 전부 다거나, 필터에 해당 된다면 안보여지는 거 삭제 = 보여지도록
-        } else {
-            project.classList.add('invisible'); // 필터에 해당이 안된다면 안보여지도록(안보여줘여 되는 클래스 등록해준다.)
-        }
-    });
-    projectContainer.classList.remove('anim-out');
-    // project~ 전체적으로 setTimeout안으로 옮김
-    // setTimeout안에 있는것들은
-    // 0.3초 이후에 호출되어진다(browser로부터)
-  }, 300);
+        projects.forEach((project) => {
+            console.log(project.dataset.type);
+            if (filter === '*' || filter === project.dataset.type) {
+                project.classList.remove('invisible'); // 필터가 전부 다거나, 필터에 해당 된다면 안보여지는 거 삭제 = 보여지도록
+            } else {
+                project.classList.add('invisible'); // 필터에 해당이 안된다면 안보여지도록(안보여줘여 되는 클래스 등록해준다.)
+            }
+        });
+        projectContainer.classList.remove('anim-out');
+        // project~ 전체적으로 setTimeout안으로 옮김
+        // setTimeout안에 있는것들은
+        // 0.3초 이후에 호출되어진다(browser로부터)
+    }, 300);
 });
 
 // 버튼 클릭스 활성화 처리
@@ -162,18 +162,14 @@ const sectionIds = [
 // 모든 섹션 요소들을  sections라는 배열에 할당해 두었고
 const sections = sectionIds.map(id => document.querySelector(id));
 // 동일한 내비게이션 메뉴아이템 요소들을 navItems로 할당해 두었다.
-const navItems = sectionIds.map(id => 
+const navItems = sectionIds.map(id =>
     document.querySelector(`[data-link="${id}"]`)
 );
 
 
-console.log(sections);
-console.log(navItems);
-
-
 // 현재 선택된 메뉴인덱스와 메뉴요소를 변수에 저장해 둠
 let selectedNavIndex = 0;
-let selectedNavItem = navItems[0]; 
+let selectedNavItem = navItems[0];
 function selectNavItem(selected) { // 새로운 메뉴아이템을 선택할 때 마다
     selectedNavItem.classList.remove('active'); // 이전에 활성화된 아이를 지워주고 
     // selectedNavItem = navItems[selectedIndex];/
@@ -191,14 +187,14 @@ function selectNavItem(selected) { // 새로운 메뉴아이템을 선택할 때
 // 더 이상 빠진 게 없는지 걱정하지 않아도 된다.
 function scrollIntoView(selector) {
     const scrollTo = document.querySelector(selector);
-    scrollTo.scrollIntoView({behavior: 'smooth'});
+    scrollTo.scrollIntoView({ behavior: 'smooth' });
     // navItems 인덱스를 전달해 주면 된다.
     // sections라는 배열안에 우리가 사용하는 모든 아이디의 이름들이 들어있다.
     selectNavItem(navItems[sections.indexOf(selector)]);
 }
 
 
-const observerOptions = { 
+const observerOptions = {
     root: null,
     rootMargin: '0px',
     threshold: 0.3
@@ -211,7 +207,7 @@ const observerOptions = {
 // 콜백안에서 해당하는 섹션을 찾아서 navbar메뉴를 활성화 시키기
 const observerCallback = (entries, observer) => {
     entries.forEach(entry => {
-        if(!entry.isIntersecting && entry.intersectionRatio > 0) { 
+        if (!entry.isIntersecting && entry.intersectionRatio > 0) {
             // console.log(entry);
             const index = sectionIds.indexOf(`#${entry.target.id}`); //인터섹션 옵저버를 이용해서
             // let selectedIndex;
@@ -239,7 +235,7 @@ window.addEventListener('scroll', () => { //위에 인덱스를 활용해서 스
     if (window.scrollY === 0) {
         selectedNavIndex = 0; // 스크롤이 제일 위라면 제일 위에 있는 인덱스를 설정하고
     } else if (
-        Math.round(window.scrollY + window.innerHeight)>= 
+        Math.round(window.scrollY + window.innerHeight) >=
         document.body.clientHeight
     ) {
         selectedNavIndex = navItems.length - 1; // 제일 아래라면 마지막의 메뉴 아이템을 선택
