@@ -5,3 +5,6 @@
 
 ## 기술스택
 Html, CSS,  Vanila Javascript
+
+
+## Javascript 기능들 한 번씩 정리하자
